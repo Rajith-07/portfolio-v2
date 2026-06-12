@@ -1,0 +1,8 @@
+import type { Metadata } from "next";
+import { FiArrowUpRight } from "react-icons/fi";
+import { Reveal } from "@/components/motion";
+import { SectionHeading } from "@/components/section-heading";
+import { research } from "@/data/portfolio";
+
+export const metadata: Metadata = { title: "Research", description: "Publications, research projects, and ongoing technical interests in systems, cloud, networking, and AI." };
+export default function ResearchPage() { return <section className="container-pad py-32"><SectionHeading eyebrow="Research" title="Academic rigor for intelligent software and reliable systems.">Research and technical investigations from the provided publication and GitHub projects.</SectionHeading><div className="grid gap-5 md:grid-cols-2">{research.map((item, i) => <Reveal key={item.title} delay={i * .06} className="glass rounded-[2rem] p-7"><p className="kicker mb-5">{item.area}</p><h2 className="text-3xl font-semibold tracking-[-0.05em]">{item.title}</h2><p className="mt-3 text-zinc-300">{item.subtitle}</p><p className="mt-5 text-sm text-zinc-500">{item.venue}</p>{item.doi && <p className="mt-2 font-mono text-xs text-zinc-500">DOI: {item.doi}</p>}<a className="mt-6 inline-flex items-center gap-2 text-sm text-white" href={item.href} target="_blank" rel="noreferrer">Open <FiArrowUpRight /></a></Reveal>)}</div><Reveal className="mt-6 glass rounded-[2rem] p-8"><p className="kicker mb-4">Ongoing interests</p><p className="copy">Systems, cloud, networking, and AI: especially where model-driven intelligence must operate inside dependable infrastructure.</p></Reveal></section>; }
